@@ -7,14 +7,16 @@ import ffmpeg
 import math
 import re
 global TOKEN
+global folder_path
 from Private import TOKEN
+from Private import folder_path
 page = 1
 msg = ""
 PREFIX = '!'
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix=PREFIX, intents=intents)
 message = ""
-folder_path = 'C:/Users/georg/Documents/Python/MMMMMusic 1.1/Videos'
+
 
 file_list = []
 for file_name in os.listdir(folder_path):
@@ -94,13 +96,15 @@ async def play(ctx, url_or_file):
 async def download_audio(url_or_file):
     # Check if the given input is a valid URL
     if is_valid_url(url_or_file):
+        path= folder_path+"%(title)s.%(ext)s"
+        print(path)
         ydl_opts = {
             'format': 'bestaudio/best',
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
                 'preferredquality': '192',
             }],
-            'outtmpl': r'C:\Users\georg\Documents\Python\MMMMMusic 1.1\Videos\%(title)s.%(ext)s',
+            'outtmpl': path,
             'keepvideo': True,
         }
 
