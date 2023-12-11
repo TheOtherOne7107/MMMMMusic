@@ -136,18 +136,7 @@ def is_valid_url(url):
         return False
 
 def is_valid_file_path(file_path):
-    print("test")
-    #file_path_additions = "C:\\Users\\georg\\Documents\\Python\\MMMMMusic 1.1\\Videos\\" + str(file_path)
-    #print(file_path_additions)
-    # Check if the given file path exists
-    #file_path = "C:\\Users\\georg\\Documents\\Python\\MMMMMusic 1.1\\Videos\\test.m4a"
     return os.path.exists(file_path)
 
 
-"""
-@bot.command()
-async def help(ctx, cmd):
-    if cmd.lower() == "playurl":
-        ctx.reply("!playurl")
-"""
 bot.run(TOKEN)
